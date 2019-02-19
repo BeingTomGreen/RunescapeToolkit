@@ -47,7 +47,6 @@ namespace RunescapeConsole
             return parsedHighscoreResults;
         }
 
-
         private async Task<string> QueryHighscores(string url)
         {
             string results = "";
@@ -113,33 +112,6 @@ namespace RunescapeConsole
 
             return activities;
         }
-
-        //private List<Activity> ParseMinigames(string[] minigameResults)
-        //{
-        //    List<Activity> minigames = new List<Activity>();
-
-        //    int minigameIndex = 0;
-
-        //    foreach (string Minigame in minigameResults)
-        //    {
-        //        string[] ParsedSkill = Minigame.Split(',');
-
-        //        string name = HighscoreMinigames[minigameIndex];
-        //        int rank = int.Parse(ParsedSkill[0]);
-        //        int number = int.Parse(ParsedSkill[1]);
-
-        //        minigames.Add(new Activity()
-        //        {
-        //            Name = name,
-        //            Rank = rank,
-        //            Number = number,
-        //        });
-
-        //        minigameIndex++;
-        //    }
-
-        //    return minigames;
-        //}
 
         private string BuildHighscoresUrl(string username, AccountType accountType)
         {

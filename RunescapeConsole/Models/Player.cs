@@ -31,7 +31,8 @@ namespace RunescapeConsole.Models
         {
 
         }
-        private string CleanUsername(string username)
+
+        public static string CleanUsername(string username)
         {
             string cleanUsername = new string(username.Where(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '-' || c == '_').ToArray());
 

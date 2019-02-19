@@ -10,18 +10,56 @@ namespace RunescapeConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("hi");
+            string username;
+            AccountType accountType;
 
-            HighscoreLookup highscoreLookup = new HighscoreLookup("ferrous_hugs", AccountType.Ironman);
+            username = AskForUsername();
 
-            Player player = highscoreLookup.Player;
+            accountType = AskForAccountType();
 
-            foreach (Skill skill in player.Skills)
-            {
-                Console.WriteLine(skill.Name);
-            }
+            Player player = new HighscoreLookup(username, accountType).Player;
+
+            DisplayPlayerInformation(player);
 
             Console.ReadLine();
+        }
+
+        private static void DisplayPlayerInformation(Player player)
+        {
+            Console.WriteLine($"Welcome, { player.Username }, you're an { player.AccountType }");
+        }
+
+
+        private static string AskForUsername()
+        {
+            string username;
+
+            Console.Write("Please enter your OSRS username: ");
+            username = Console.ReadLine();
+
+            return Player.CleanUsername(username);
+        }
+
+        private static AccountType AskForAccountType()
+        {
+            int accountTypeInt;
+
+            Console.WriteLine("Please enter your Account type: ");
+
+            foreach(AccountType as AccountTypes)
+            Console.WriteLine("Normal = 0");
+            Console.WriteLine("Ironman = 0");
+            Console.WriteLine("Ultimate Ironman = 0");
+            Console.WriteLine("Normal = 0");
+            Console.WriteLine("Normal = 0");
+            accountTypeInt = int.Parse(Console.ReadLine());
+            
+
+            AccountType accountType = (AccountType)accountTypeInt;
+
+            Console.ReadLine();
+
+            return accountType;
         }
     }
 }
