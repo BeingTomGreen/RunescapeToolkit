@@ -10,5 +10,10 @@
 
         public int Experience { get; set; }
 
+        public Skill()
+        {
+
+        }
+
     }
 }

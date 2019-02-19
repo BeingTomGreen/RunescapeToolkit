@@ -1,6 +1,6 @@
 ﻿namespace RunescapeConsole.Models
 {
-    class Minigame
+    class Activity
     {
         public string Name { get; set; }
 
@@ -8,5 +8,9 @@
 
         public int Number { get; set; }
 
+        public Activity()
+        {
+
+        }
     }
 }

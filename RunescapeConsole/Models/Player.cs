@@ -1,64 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using RunescapeConsole.Enums;
 
 namespace RunescapeConsole.Models
 {
     class Player
     {
-        public string Username { get; private set; }
+        private string username;
 
-        public string AccountType { get; private set; }
-
-        public List<Skill> Skills { get; set; } //= new List<Skill>()
-
-        public List<Minigame> Minigames { get; set; } //= new List<Minigame>();
-
-        public Player(string aUsername, int aAccountType = 0)
+        public string Username
         {
-            Username = CleanUsername(aUsername);
-
-            AccountType = GetAccountTypeString(aAccountType);
-        }
-
-        public string GetAccountTypeString(int AccountType)
-        {
-            string AccountTypeString = "";
-
-            switch (AccountType)
+            get
             {
-                case 0:
-                    AccountTypeString = "normal";
-                    break;
-                case 1:
-                    AccountTypeString = "ironman";
-                    break;
-                case 2:
-                    AccountTypeString = "ultimate";
-                    break;
-                case 3:
-                    AccountTypeString = "hardcore";
-                    break;
-                case 4:
-                    AccountTypeString = "deadman";
-                    break;
-                case 5:
-                    AccountTypeString = "seasonal";
-                    break;
-                default:
-                    AccountTypeString = "normal";
-                    break;
+                return username;
             }
 
-            return AccountTypeString;
+            set {
+                username = CleanUsername(value);
+            }
         }
 
-        private string CleanUsername(string Username)
+        public AccountType AccountType { get; set; }
+
+        public List<Skill> Skills { get; set; }
+
+        public List<Activity> Activities{ get; set; }
+
+        public Player()
         {
-            string CleanUsername = new string(Username.Where(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '-' || c == '_').ToArray());
 
-            CleanUsername = CleanUsername.Replace(" ", "_");
+        }
+        private string CleanUsername(string username)
+        {
+            string cleanUsername = new string(username.Where(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '-' || c == '_').ToArray());
 
-            return CleanUsername;
+            cleanUsername = cleanUsername.Replace(" ", "_");
+
+            return cleanUsername;
         }
     }
 }
