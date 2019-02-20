@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RunescapeConsole.Enums;
 using RunescapeConsole.Models;
@@ -46,20 +47,32 @@ namespace RunescapeConsole
 
             Console.WriteLine("Please enter your Account type: ");
 
-            foreach(AccountType as AccountTypes)
+            //List<AccountType> accountTypes = Enum.GetNames(typeof(AccountType)).Cast<AccountType>().ToList();
+
+            Array accountTypes = Enum.GetValues(typeof(AccountType));
+
+            foreach (AccountType accountType in accountTypes)
+            {
+                string typeString = accountType;
+                int typeInt = Convert.ToInt32(accountType);
+
+
+                Console.WriteLine(string.Format("{0}: {1}", Enum.GetName(typeof(AccountType), accountType), accountType));
+            }
+
+
             Console.WriteLine("Normal = 0");
             Console.WriteLine("Ironman = 0");
             Console.WriteLine("Ultimate Ironman = 0");
             Console.WriteLine("Normal = 0");
             Console.WriteLine("Normal = 0");
-            accountTypeInt = int.Parse(Console.ReadLine());
-            
+            //accountTypeInt = int.Parse(Console.ReadLine());
 
-            AccountType accountType = (AccountType)accountTypeInt;
+            //AccountType accountType = (AccountType)accountTypeInt;
 
             Console.ReadLine();
 
-            return accountType;
+            return AccountType.Ironman;// accountType;
         }
     }
 }
