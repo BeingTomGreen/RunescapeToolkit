@@ -31,18 +31,40 @@ namespace RunescapeConsole
 
             Console.WriteLine("Your Skills:");
 
-            foreach (Skill skill in player.Skills)
+            ParsePlayerSkills(player.Skills);
+
+            //Console.WriteLine("Your Activities:");
+
+            //foreach (Activity activity in player.Activities)
+            //{
+            //    Console.WriteLine(activity.Name + " - Rank: " + activity.Rank.ToString("N0") + ", Count: " + activity.Number.ToString("N0"));
+            //}
+        }
+
+
+        private static void ParsePlayerSkills(List<Skill> skills)
+        {
+            // Yes, foreach (Console.Write) isn't the best way to handle this I'm sure, but it works for this... sue me...
+            foreach (Skill skill in skills)
             {
-                Console.WriteLine(skill.Name + " - Level: " + skill.Level + ", Experience: " + skill.Experience.ToString("N0") + ", Rank: " + skill.Rank.ToString("N0"));
+                Console.Write(skill.Name + " - ");
+                Console.Write("Level: " + skill.Level);
+
+                if (skill.isMax())
+                {
+                    Console.Write(" (Max)");
+                }
+
+                Console.Write(", ");
+                Console.Write("Experience: " + skill.Experience.ToString("N0") + ", ");
+                Console.Write("Rank: " + skill.Rank.ToString("N0"));
+                Console.WriteLine();
+
+
+
+
+                //Console.WriteLine(skill.Name + " - Level: " + skill.Level + ", Experience: " + skill.Experience.ToString("N0") + ", Rank: " + skill.Rank.ToString("N0"));
             }
-
-            Console.WriteLine("Your Activities:");
-
-            foreach (Activity activity in player.Activities)
-            {
-                Console.WriteLine(activity.Name + " - Rank: " + activity.Rank.ToString("N0") + ", Count: " + activity.Number.ToString("N0"));
-            }
-
         }
 
         private static string AskForUsername()
