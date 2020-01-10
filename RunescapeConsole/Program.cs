@@ -44,13 +44,13 @@ namespace RunescapeConsole
 
         private static void ParsePlayerSkills(List<Skill> skills)
         {
-            // Yes, foreach (Console.Write) isn't the best way to handle this I'm sure, but it works for this... sue me...
+            // Yes, foreach {Console.Write} isn't the best way to handle this I'm sure, but it works for this... sue me...
             foreach (Skill skill in skills)
             {
                 Console.Write(skill.Name + " - ");
                 Console.Write("Level: " + skill.Level);
 
-                if (skill.isMax())
+                if (skill.IsMax())
                 {
                     Console.Write(" (Max)");
                 }

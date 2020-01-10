@@ -15,7 +15,7 @@
 
         }
 
-        public bool isMax()
+        public bool IsMax()
         {
             if ((this.Name == "Overall" && this.Level == 2277) || this.Level == 99)
             {
