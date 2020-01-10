@@ -11,10 +11,7 @@ namespace RunescapeConsole.Models
 
         public string Username
         {
-            get
-            {
-                return username;
-            }
+            get { return username; }
 
             set {
                 username = CleanUsername(value);

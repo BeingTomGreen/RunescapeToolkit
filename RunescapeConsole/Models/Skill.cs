@@ -9,21 +9,35 @@
         public int Level { get; set; }
 
         public int Experience { get; set; }
+        
+        public bool IsMax
+        {
+            get {
+                if ((this.Name == "Overall" && this.Level == 2277) || this.Level == 99)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
 
         public Skill()
         {
 
         }
 
-        public bool IsMax()
-        {
-            if ((this.Name == "Overall" && this.Level == 2277) || this.Level == 99)
-            {
-                return true;
-            }
+        // Perhaps this shouldn't be a method? Instead a property   
+        //public bool IsMax()
+        //{
+        //    if ((this.Name == "Overall" && this.Level == 2277) || this.Level == 99)
+        //    {
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
     }
 }

@@ -29,28 +29,22 @@ namespace RunescapeConsole
         {
             Console.WriteLine($"Welcome, { player.Username }, you're an { player.AccountType }");
 
-            Console.WriteLine("Your Skills:");
-
             ParsePlayerSkills(player.Skills);
 
-            //Console.WriteLine("Your Activities:");
-
-            //foreach (Activity activity in player.Activities)
-            //{
-            //    Console.WriteLine(activity.Name + " - Rank: " + activity.Rank.ToString("N0") + ", Count: " + activity.Number.ToString("N0"));
-            //}
+            ParsePlayerActivities(player.Activities);
         }
-
 
         private static void ParsePlayerSkills(List<Skill> skills)
         {
+            Console.WriteLine("Your Skills:");
+
             // Yes, foreach {Console.Write} isn't the best way to handle this I'm sure, but it works for this... sue me...
             foreach (Skill skill in skills)
             {
                 Console.Write(skill.Name + " - ");
                 Console.Write("Level: " + skill.Level);
 
-                if (skill.IsMax())
+                if (skill.IsMax)
                 {
                     Console.Write(" (Max)");
                 }
@@ -58,6 +52,20 @@ namespace RunescapeConsole
                 Console.Write(", ");
                 Console.Write("Experience: " + skill.Experience.ToString("N0") + ", ");
                 Console.Write("Rank: " + skill.Rank.ToString("N0"));
+                Console.WriteLine();
+            }
+        }
+
+        private static void ParsePlayerActivities(List<Activity> activities)
+        {
+            Console.WriteLine("Your Activities:");
+
+            // Yes, foreach {Console.Write} isn't the best way to handle this I'm sure, but it works for this... sue me...
+            foreach (Activity activity in activities)
+            {
+                Console.Write(activity.Name + " - ");
+                Console.Write("Rank: " + activity.Rank + ", ");
+                Console.Write("Count: " + activity.Number.ToString("N0") + ", ");
                 Console.WriteLine();
             }
         }
