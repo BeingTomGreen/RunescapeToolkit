@@ -97,7 +97,7 @@ namespace RunescapeConsole
             List<Activity> activities = new List<Activity>();
 
             // Skip x number of elements, then select remaining elements where x is the total number of skills, this skips the skills and selects the minigames
-            highscoreResults = highscoreResults.Skip(Enum.GetNames(typeof(Activities)).Length).ToArray();
+            highscoreResults = highscoreResults.Take(Enum.GetNames(typeof(Activities)).Length).ToArray();
 
             foreach (var activity in highscoreResults.Select((value, i) => new { i, value }))
             {
