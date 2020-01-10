@@ -14,9 +14,9 @@ namespace RunescapeConsole
             string username;
             AccountType accountType;
 
-            username = "ferrous_hugs";//AskForUsername();
+            username = AskForUsername();
 
-            accountType = AccountType.Ironman;//AskForAccountType();
+            accountType = AskForAccountType();
 
             Player player = new HighscoreLookup(username, accountType).Player;
 
@@ -27,6 +27,8 @@ namespace RunescapeConsole
 
         private static void DisplayPlayerInformation(Player player)
         {
+            Console.Clear();
+
             Console.WriteLine($"Welcome, { player.Username }, you're an { player.AccountType }");
 
             ParsePlayerSkills(player.Skills);
@@ -64,7 +66,7 @@ namespace RunescapeConsole
             foreach (Activity activity in activities)
             {
                 Console.Write(activity.Name + " - ");
-                Console.Write("Rank: " + activity.Rank + ", ");
+                Console.Write("Rank: " + activity.Rank.ToString("N0") + ", ");
                 Console.Write("Count: " + activity.Number.ToString("N0") + ", ");
                 Console.WriteLine();
             }
