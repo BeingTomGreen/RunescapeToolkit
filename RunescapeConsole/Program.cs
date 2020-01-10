@@ -59,11 +59,6 @@ namespace RunescapeConsole
                 Console.Write("Experience: " + skill.Experience.ToString("N0") + ", ");
                 Console.Write("Rank: " + skill.Rank.ToString("N0"));
                 Console.WriteLine();
-
-
-
-
-                //Console.WriteLine(skill.Name + " - Level: " + skill.Level + ", Experience: " + skill.Experience.ToString("N0") + ", Rank: " + skill.Rank.ToString("N0"));
             }
         }
 
