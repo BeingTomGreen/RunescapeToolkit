@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Tools.Enums;
-using Tools.Models;
-
+using Core.Enums;
+using Core.Models;
+using Highscores;
 
 namespace Tools
 {
@@ -18,7 +18,7 @@ namespace Tools
 
             accountType = AskForAccountType();
 
-            Player player = new HighscoreLookup(username, accountType).Player;
+            Player player = new HighscoresLookup(username, accountType).Player;
 
             DisplayPlayerInformation(player);
 

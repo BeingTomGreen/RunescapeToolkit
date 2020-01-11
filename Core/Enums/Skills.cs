@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Tools.Enums
+namespace Core.Enums
 {
     public enum Skills
     {

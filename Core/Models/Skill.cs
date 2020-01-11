@@ -1,4 +1,4 @@
-﻿namespace Tools.Models
+﻿namespace Core.Models
 {
     public class Skill
     {
