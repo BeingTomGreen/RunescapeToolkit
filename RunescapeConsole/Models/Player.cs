@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RunescapeConsole.Enums;
+using Tools.Enums;
 
-namespace RunescapeConsole.Models
+namespace Tools.Models
 {
-    class Player
+    public class Player
     {
         private string username;
 

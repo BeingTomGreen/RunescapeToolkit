@@ -1,5 +1,5 @@
-﻿using RunescapeConsole.Enums;
-using RunescapeConsole.Models;
+﻿using Tools.Enums;
+using Tools.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace RunescapeConsole
+namespace Tools
 {
-    class HighscoreLookup
+    public class HighscoreLookup
     {
         private static readonly string highscoreUrl = "https://secure.runescape.com/m=hiscore_oldschool_{0}/index_lite.ws?player={1}";
 

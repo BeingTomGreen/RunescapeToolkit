@@ -1,6 +1,6 @@
-﻿namespace RunescapeConsole.Models
+﻿namespace Tools.Models
 {
-    class Skill
+    public class Skill
     {
         public string Name { get; set; }
 

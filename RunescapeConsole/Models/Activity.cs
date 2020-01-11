@@ -1,6 +1,6 @@
-﻿namespace RunescapeConsole.Models
+﻿namespace Tools.Models
 {
-    class Activity
+    public class Activity
     {
         public string Name { get; set; }
 

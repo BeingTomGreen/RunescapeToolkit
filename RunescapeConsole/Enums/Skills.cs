@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RunescapeConsole.Enums
+namespace Tools.Enums
 {
     public enum Skills
     {

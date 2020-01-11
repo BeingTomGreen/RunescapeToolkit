@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RunescapeConsole.Enums;
-using RunescapeConsole.Models;
+using Tools.Enums;
+using Tools.Models;
 
 
-namespace RunescapeConsole
+namespace Tools
 {
     class Program
     {
