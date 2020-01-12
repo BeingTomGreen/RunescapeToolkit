@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Core.Enums;
 using Core.Helpers;
-using Core.Models;
 
 namespace Core.Models
 {
@@ -19,7 +16,7 @@ namespace Core.Models
 
         public Player(string username, AccountType accountType, List<Skill> skills, List<Activity> activities)
         {
-            this.Username = PlayerHelpers.CleanUsername(username);
+            this.Username = PlayerHelper.CleanUsername(username);
             this.AccountType = accountType;
             this.Skills = skills;
             this.Activities = activities;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Core;
 using Core.Enums;
 using Core.Helpers;
@@ -82,7 +81,7 @@ namespace Tools
             Console.Write("Please enter your OSRS username: ");
             username = Console.ReadLine();
 
-            return PlayerHelpers.CleanUsername(username);
+            return PlayerHelper.CleanUsername(username);
         }
 
         private static AccountType AskForAccountType()
