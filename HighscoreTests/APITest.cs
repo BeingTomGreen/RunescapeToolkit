@@ -1,0 +1,33 @@
+﻿using Xunit;
+using Highscore;
+using Core.Enums;
+
+namespace HighscoreTests
+{
+    public class APITest
+    {
+        [Fact]
+        public void BuildHighscoresUrlTest()
+        {
+            string username = "ferrous_hugs";
+            string urlString = "https://secure.runescape.com/m=hiscore_oldschool_{0}/index_lite.ws?player={1}";
+
+            Assert.Equal(string.Format(urlString, "normal", username), API.BuildHighscoresUrl(username));
+            Assert.Equal(string.Format(urlString, "normal", username), API.BuildHighscoresUrl(username, AccountType.Normal));
+            Assert.Equal(string.Format(urlString, "ironman", username), API.BuildHighscoresUrl(username, AccountType.Ironman));
+            Assert.Equal(string.Format(urlString, "ultimate", username), API.BuildHighscoresUrl(username, AccountType.UltimateIronman));
+            Assert.Equal(string.Format(urlString, "hardcore", username), API.BuildHighscoresUrl(username, AccountType.HardcoreIronman));
+            Assert.Equal(string.Format(urlString, "deadman", username), API.BuildHighscoresUrl(username, AccountType.DeadmanMode));
+            Assert.Equal(string.Format(urlString, "seasonal", username), API.BuildHighscoresUrl(username, AccountType.SeasonalDeadmanMode));
+        }
+
+        [Fact]
+        public void ParseAPIResultsTest()
+        {
+            string apiResult = "5682,2096,248856374\n1728,99,20222789\n862,99,21404292\n2667,99,19524476\n1980,99,34088975\n11629,96,10598970\n4750,86,3618508\n691,99,27928135\n8718,93,7727990\n1628,99,13453533\n827,99,14016649\n15828,90,5406123\n39882,96,9951143\n10816,91,6121266\n9384,84,3008641\n15400,82,2434506\n4335,92,6970197\n9854,83,2849958\n28083,80,2059413\n458,99,23157843\n10132,94,8020632\n10290,74,1121023\n35845,78,1639263\n4165,85,3532049\n-1,-1\n-1,-1\n-1,-1\n11183,374\n-1,-1\n4701,122\n19270,71\n9548,163\n11679,16\n10677,2\n-1,-1\n-1,-1\n-1,-1\n18126,284\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n10248,47\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n16961,1\n-1,-1\n23384,11\n16421,1\n14452,2\n415,4288\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n207,86\n-1,-1\n-1,-1\n-1,-1\n8203,31\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n-1,-1\n25772,308\n-1,-1\n-1,-1\n";
+            string[] results = API.ParseAPIResults(apiResult);
+
+            Assert.Equal(78, results.Length);
+        }
+    }
+}

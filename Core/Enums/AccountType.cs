@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Core.Enums
+﻿namespace Core.Enums
 {
-    public enum AccountType
+    public enum AccountType 
     {
         Normal,
         Ironman,

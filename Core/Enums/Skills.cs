@@ -31,4 +31,5 @@ namespace Core.Enums
         Hunter,
         Construction
     }
+
 }

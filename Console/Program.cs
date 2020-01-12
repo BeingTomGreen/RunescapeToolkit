@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using Core.Enums;
+using Core.Helpers;
 using Core.Models;
-using Highscores;
 
 namespace Tools
 {
@@ -14,22 +15,24 @@ namespace Tools
             string username;
             AccountType accountType;
 
-            username = AskForUsername();
+            //username = AskForUsername();
+            //accountType = AskForAccountType();
 
-            accountType = AskForAccountType();
+            username = "ferrous_hugs";
+            accountType = AccountType.Ironman;
 
-            Player player = new HighscoresLookup(username, accountType).Player;
+            Player player = new HighscoreLookup(username, accountType).Player;
 
-            DisplayPlayerInformation(player);
+            DisplayAccountInformation(player);
 
             Console.ReadLine();
         }
 
-        private static void DisplayPlayerInformation(Player player)
+        private static void DisplayAccountInformation(Player player)
         {
             Console.Clear();
 
-            Console.WriteLine($"Welcome, { player.Username }, you're an { player.AccountType }");
+            Console.WriteLine($"Welcome, { player.Username } ({ player.AccountType })");
 
             ParsePlayerSkills(player.Skills);
 
@@ -79,7 +82,7 @@ namespace Tools
             Console.Write("Please enter your OSRS username: ");
             username = Console.ReadLine();
 
-            return Player.CleanUsername(username);
+            return PlayerHelpers.CleanUsername(username);
         }
 
         private static AccountType AskForAccountType()

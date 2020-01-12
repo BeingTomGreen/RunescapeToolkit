@@ -3,36 +3,27 @@ using Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Highscore.Models;
 
-namespace Highscores
+namespace Highscore
 {
-    public class HighscoresLookup
+    public class HighscoreLookup
     {
-        public Player Player { get; private set; }
+        public HighscoreResult HighscoreResult { get; private set;}
 
-        public HighscoresLookup(string username, AccountType accountType)
+        public HighscoreLookup(string username, AccountType accountType)
         {
-            Player = new Player() { Username = username, AccountType = accountType };
+            Player player = new Player(username, accountType);
 
-            string[] highscoreResults = ParsePlayerHighscores(Player);
+            string apiResults = API.QueryHighscores(player).Result;
 
-            Player.Skills = ParseSkills(highscoreResults);
+            string[] highscoreResults = API.ParseAPIResults(apiResults);
 
-            Player.Activities = ParseActivities(highscoreResults);
+            player.Skills = ParseSkills(highscoreResults);
+
+            player.Activities = ParseActivities(highscoreResults);
         }
         
-        private string[] ParsePlayerHighscores(Player player)
-        {
-            string highscoresResults = API.QueryHighscores(player).Result;
-
-            string[] parsedHighscoreResults = highscoresResults.Split("\n");
-
-            // Drop the last element which is an empty line
-            parsedHighscoreResults = parsedHighscoreResults.Take(parsedHighscoreResults.Count() - 1).ToArray();
-
-            return parsedHighscoreResults;
-        }
-
         private List<Skill> ParseSkills(string[] highscoreResults)
         {
             List<Skill> skills = new List<Skill>();
@@ -49,7 +40,7 @@ namespace Highscores
                 int level = int.Parse(parsedSkill[1]);
                 int experience = int.Parse(parsedSkill[2]);
 
-                skills.Add(new Skill() { Name = name, Rank = rank, Level = level, Experience = experience });
+                skills.Add(new Skill(name, rank, level, experience));
             }
 
             return skills;
@@ -70,7 +61,7 @@ namespace Highscores
                 int rank = int.Parse(parsedActivity[0]);
                 int number = int.Parse(parsedActivity[1]);
 
-                activities.Add(new Activity() { Name = name, Rank = rank, Number = number });
+                activities.Add(new Activity(name, rank, number));
             }
 
             return activities;

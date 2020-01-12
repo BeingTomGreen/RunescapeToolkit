@@ -2,40 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Enums;
+using Core.Helpers;
+using Core.Models;
 
 namespace Core.Models
 {
     public class Player
     {
-        private string username;
+        public string Username { get; private set; }
 
-        public string Username
+        public AccountType AccountType { get; private set; }
+
+        public List<Skill> Skills { get; private set; }
+
+        public List<Activity> Activities{ get; private set; }
+
+        public Player(string username, AccountType accountType, List<Skill> skills, List<Activity> activities)
         {
-            get { return username; }
-
-            set {
-                username = CleanUsername(value);
-            }
+            this.Username = PlayerHelpers.CleanUsername(username);
+            this.AccountType = accountType;
+            this.Skills = skills;
+            this.Activities = activities;
         }
 
-        public AccountType AccountType { get; set; }
-
-        public List<Skill> Skills { get; set; }
-
-        public List<Activity> Activities{ get; set; }
-
-        public Player()
-        {
-
-        }
-
-        public static string CleanUsername(string username)
-        {
-            string cleanUsername = new string(username.Where(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '-' || c == '_').ToArray());
-
-            cleanUsername = cleanUsername.Replace(" ", "_");
-
-            return cleanUsername;
-        }
     }
 }
