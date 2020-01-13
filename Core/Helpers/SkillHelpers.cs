@@ -6,14 +6,20 @@ namespace Core.Helpers
 {
     public static class SkillHelpers
     {
-        public static bool validateSkillName(string skillName)
+        public static bool ValidateSkillName(string skillName)
         {
             if (Enum.IsDefined(typeof(Skills), skillName))
-            {
                 return true;
-            }
 
-            throw new InvalidSkillNameException(String.Format("Skill name, {0}, is invalid.", skillName));
+            return false;
+        }
+
+        public static bool (string skillName)
+        {
+            if (Enum.IsDefined(typeof(Skills), skillName))
+                return true;
+
+            return false;
         }
 
     }
