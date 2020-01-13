@@ -42,36 +42,16 @@ namespace Tools
         {
             Console.WriteLine("Your Skills:");
 
-            // Yes, foreach {Console.Write} isn't the best way to handle this I'm sure, but it works for this... sue me...
-            foreach (Skill skill in skills)
-            {
-                Console.Write(skill.Name + " - ");
-                Console.Write("Level: " + skill.Level);
-
-                if (skill.IsMax)
-                {
-                    Console.Write(" (Max)");
-                }
-
-                Console.Write(", ");
-                Console.Write("Experience: " + skill.Experience.ToString("N0") + ", ");
-                Console.Write("Rank: " + skill.Rank.ToString("N0"));
-                Console.WriteLine();
-            }
+            // Consider yourself sued!
+            skills.ForEach(skill =>  Console.WriteLine($"{skill.Name} - Level: {skill.Level}{(skill.IsMax ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
+            
         }
 
         private static void ParsePlayerActivities(List<Activity> activities)
         {
             Console.WriteLine("Your Activities:");
-
-            // Yes, foreach {Console.Write} isn't the best way to handle this I'm sure, but it works for this... sue me...
-            foreach (Activity activity in activities)
-            {
-                Console.Write(activity.Name + " - ");
-                Console.Write("Rank: " + activity.Rank.ToString("N0") + ", ");
-                Console.Write("Count: " + activity.Number.ToString("N0") + ", ");
-                Console.WriteLine();
-            }
+            // Consider yourself sued!
+            activities.ForEach(activity => Console.WriteLine($"{activity.Name} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
         }
 
         private static string AskForUsername()
