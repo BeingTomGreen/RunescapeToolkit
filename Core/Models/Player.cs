@@ -22,5 +22,10 @@ namespace Core.Models
             this.Activities = activities;
         }
 
+        public PlayerSkill Skill(SkillType skillType)
+        {
+            return this.Skills.Find(x => x.Skill.Equals(skillType));
+        }
+
     }
 }
