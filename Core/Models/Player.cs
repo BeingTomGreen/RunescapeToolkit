@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Core.Enums;
+using Core.Helpers;
 
 namespace Core.Models
 {
@@ -9,13 +10,13 @@ namespace Core.Models
 
         public AccountType AccountType { get; private set; }
 
-        public List<Skill> Skills { get; private set; }
+        public List<PlayerSkill> Skills { get; private set; }
 
-        public List<Activity> Activities{ get; private set; }
+        public List<PlayerActivity> Activities{ get; private set; }
 
-        public Player(string username, AccountType accountType, List<Skill> skills, List<Activity> activities)
+        public Player(string username, AccountType accountType, List<PlayerSkill> skills, List<PlayerActivity> activities)
         {
-            this.Username = username;
+            this.Username = PlayerHelper.CleanUsername(username);
             this.AccountType = accountType;
             this.Skills = skills;
             this.Activities = activities;

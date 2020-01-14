@@ -1,6 +1,6 @@
 ﻿namespace Core.Enums
 {
-    public enum SkillName
+    public enum SkillType
     {
         Overall,
         Attack,

@@ -15,8 +15,11 @@ namespace Tools
             string username;
             AccountType accountType;
 
-            username = AskForUsername();
-            accountType = AskForAccountType();
+            //username = AskForUsername();
+            //accountType = AskForAccountType();
+
+            username = "ferrous_hugs";
+            accountType = AccountType.Ironman;
 
             Player player = new HighscoreLookup(username, accountType).Player;
 
@@ -31,23 +34,23 @@ namespace Tools
 
             Console.WriteLine($"Welcome, { player.Username } ({ player.AccountType })");
 
-            ParsePlayerSkills(player.Skills);
+            DisplayPlayerSkills(player.Skills);
 
-            ParsePlayerActivities(player.Activities);
+            DisplayPlayerActivities(player.Activities);
         }
 
-        private static void ParsePlayerSkills(List<Skill> skills)
+        private static void DisplayPlayerSkills(List<PlayerSkill> skills)
         {
             Console.WriteLine("Your Skills:");
 
-            skills.ForEach(skill =>  Console.WriteLine($"{skill.Name} - Level: {skill.Level}{(skill.IsMax() ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
+            skills.ForEach(skill => Console.WriteLine($"{skill.Skill.ToString()} - Level: {skill.Level}{(skill.IsMax() ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
         }
 
-        private static void ParsePlayerActivities(List<Activity> activities)
+        private static void DisplayPlayerActivities(List<PlayerActivity> activities)
         {
             Console.WriteLine("Your Activities:");
 
-            activities.ForEach(activity => Console.WriteLine($"{activity.Name} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
+            activities.ForEach(activity => Console.WriteLine($"{activity.Activity.ToString()} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
         }
 
         private static string AskForUsername()
@@ -73,7 +76,7 @@ namespace Tools
                 }
             } while (!isValidUsername);
 
-            return username;
+            return PlayerHelper.CleanUsername(username);
         }
 
         private static AccountType AskForAccountType()

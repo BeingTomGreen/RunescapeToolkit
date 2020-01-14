@@ -7,9 +7,9 @@ namespace Core.Models
 {
     public class HighscoreResult
     {
-        public List<Skill> Skills { get; private set; }
+        public List<PlayerSkill> Skills { get; private set; }
 
-        public List<Activity> Activities { get; private set; }
+        public List<PlayerActivity> Activities { get; private set; }
 
         public HighscoreResult(string apiResults)
         {
@@ -18,45 +18,45 @@ namespace Core.Models
             // Drop the last element which is an empty line
             parsedHighscoreResults = parsedHighscoreResults.Take(parsedHighscoreResults.Length - 1).ToArray();
 
-            string[] skillsArray = parsedHighscoreResults.Take(Enum.GetNames(typeof(SkillName)).Length).ToArray();
+            string[] skillsArray = parsedHighscoreResults.Take(Enum.GetNames(typeof(SkillType)).Length).ToArray();
             string[] activitiesArray = parsedHighscoreResults.TakeLast(Enum.GetNames(typeof(ActivityType)).Length).ToArray();
 
             this.Skills = parseSkills(skillsArray);
             this.Activities = parseActivities(activitiesArray);
         }
 
-        private List<Skill> parseSkills(string[] highscoreSkillResults)
+        private List<PlayerSkill> parseSkills(string[] highscoreSkillResults)
         {
-            List<Skill> skills = new List<Skill>();
+            List<PlayerSkill> skills = new List<PlayerSkill>();
 
             foreach (var skill in highscoreSkillResults.Select((value, i) => new { i, value }))
             {
                 string[] parsedSkill = skill.value.Split(',');
 
-                string name = Enum.GetName(typeof(SkillName), skill.i);
+                SkillType skillType = (SkillType)skill.i;
                 int rank = int.Parse(parsedSkill[0]);
                 int level = int.Parse(parsedSkill[1]);
                 int experience = int.Parse(parsedSkill[2]);
 
-                skills.Add(new Skill(name, rank, level, experience));
+                skills.Add(new PlayerSkill(skillType, rank, level, experience));
             }
 
             return skills;
         }
 
-        private List<Activity> parseActivities(string[] highscoreActivitiesResults)
+        private List<PlayerActivity> parseActivities(string[] highscoreActivitiesResults)
         {
-            List<Activity> activities = new List<Activity>();
+            List<PlayerActivity> activities = new List<PlayerActivity>();
 
             foreach (var activity in highscoreActivitiesResults.Select((value, i) => new { i, value }))
             {
                 string[] parsedActivity = activity.value.Split(',');
 
-                string name = Enum.GetName(typeof(ActivityType), activity.i);
+                ActivityType activityType = (ActivityType)activity.i;
                 int rank = int.Parse(parsedActivity[0]);
                 int number = int.Parse(parsedActivity[1]);
 
-                activities.Add(new Activity(name, rank, number));
+                activities.Add(new PlayerActivity(activityType, rank, number));
             }
 
             return activities;

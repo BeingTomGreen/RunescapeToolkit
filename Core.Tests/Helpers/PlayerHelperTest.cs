@@ -34,6 +34,12 @@ namespace Core.Tests.Helpers
         }
 
         [Fact]
+        public void CleanUsernameTest()
+        {
+            Assert.Equal("Ferrous_hugs", PlayerHelper.CleanUsername(" Ferrous hugs"));
+        }
+
+        [Fact]
         public void BuildHighscoreUrlTest()
         {
             string username = "ferrous_hugs";

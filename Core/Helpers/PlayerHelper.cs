@@ -40,6 +40,11 @@ namespace Core.Helpers
             return accountTypeString;
         }
 
+        public static string CleanUsername(string username)
+        {
+            return username.Trim().Replace(" ", "_");
+        }
+
         public static bool ValidateUsername(string username)
         {
             return _usernameRegex.IsMatch(username.Trim());
