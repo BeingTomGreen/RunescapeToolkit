@@ -1,5 +1,5 @@
-﻿using Core;
-using Core.Enums;
+﻿using Core.Enums;
+using Core.Extensions;
 using Core.Models;
 using System;
 using Xunit;
@@ -17,10 +17,10 @@ namespace HighscoreTests.Models
             HighscoreResult highscoreResult = new HighscoreResult(apiResult);
             Skill slayer = highscoreResult.Skills.Find(x => x.Name.Equals("Slayer"));
 
-            Assert.Equal(Enum.GetNames(typeof(Skills)).Length, highscoreResult.Skills.Count);
-            Assert.Equal(Enum.GetNames(typeof(Activities)).Length, highscoreResult.Activities.Count);
+            Assert.Equal(Enum.GetNames(typeof(SkillName)).Length, highscoreResult.Skills.Count);
+            Assert.Equal(Enum.GetNames(typeof(ActivityType)).Length, highscoreResult.Activities.Count);
             Assert.Equal(99, slayer.Level);
-            Assert.True(slayer.IsMax);
+            Assert.True(slayer.IsMax());
         }
 
     }

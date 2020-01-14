@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Core.Enums;
-using Core.Models;
 
 namespace Core
 {
@@ -11,13 +8,13 @@ namespace Core
     {
         private static HttpClient httpClient = new HttpClient();
 
-        public static async Task<string> GetString(string url)
+        public static async Task<string> GetString(Uri url)
         {
             string results = "";
 
             try
             {
-                results = await httpClient.GetStringAsync(url);
+                results = await httpClient.GetStringAsync(url).ConfigureAwait(true);
 
             }
             catch (HttpRequestException e)

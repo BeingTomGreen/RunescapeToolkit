@@ -1,7 +1,5 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 using Core.Helpers;
-using Core.Exceptions;
 using Core.Enums;
 
 namespace Core.Tests.Helpers
@@ -19,14 +17,6 @@ namespace Core.Tests.Helpers
             Assert.Equal("Hardcore Ironman", PlayerHelper.GetAccountTypeDisplayString(Enums.AccountType.HardcoreIronman));
             Assert.Equal("Deadman", PlayerHelper.GetAccountTypeDisplayString(Enums.AccountType.DeadmanMode));
             Assert.Equal("Seasonal Deadman", PlayerHelper.GetAccountTypeDisplayString(Enums.AccountType.SeasonalDeadmanMode));
-        }
-
-        [Fact]
-        public void CleanUsernameTest()
-        {
-            Assert.Equal("ferrous_hugs", PlayerHelper.CleanUsername("ferrous hugs"));
-            Assert.Equal("ferrous_hugs", PlayerHelper.CleanUsername("ferrous_hugs"));
-            Assert.Equal("ferrous_hugs", PlayerHelper.CleanUsername("ferrous!£$%^&*() hugs"));
         }
 
         [Fact]
@@ -49,13 +39,13 @@ namespace Core.Tests.Helpers
             string username = "ferrous_hugs";
             string urlString = "https://secure.runescape.com/m=hiscore_oldschool_{0}/index_lite.ws?player={1}";
 
-            Assert.Equal(string.Format(urlString, "normal", username), PlayerHelper.BuildHighscoreUrl(username));
-            Assert.Equal(string.Format(urlString, "normal", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.Normal));
-            Assert.Equal(string.Format(urlString, "ironman", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.Ironman));
-            Assert.Equal(string.Format(urlString, "ultimate", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.UltimateIronman));
-            Assert.Equal(string.Format(urlString, "hardcore", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.HardcoreIronman));
-            Assert.Equal(string.Format(urlString, "deadman", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.DeadmanMode));
-            Assert.Equal(string.Format(urlString, "seasonal", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.SeasonalDeadmanMode));
+            Assert.Equal(string.Format(urlString, "normal", username), PlayerHelper.BuildHighscoreUrl(username).ToString());
+            Assert.Equal(string.Format(urlString, "normal", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.Normal).ToString());
+            Assert.Equal(string.Format(urlString, "ironman", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.Ironman).ToString());
+            Assert.Equal(string.Format(urlString, "ultimate", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.UltimateIronman).ToString());
+            Assert.Equal(string.Format(urlString, "hardcore", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.HardcoreIronman).ToString());
+            Assert.Equal(string.Format(urlString, "deadman", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.DeadmanMode).ToString());
+            Assert.Equal(string.Format(urlString, "seasonal", username), PlayerHelper.BuildHighscoreUrl(username, AccountType.SeasonalDeadmanMode).ToString());
         }
     }
 }

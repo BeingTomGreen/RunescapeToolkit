@@ -1,6 +1,6 @@
 ﻿namespace Core.Enums
 {
-    public enum Activities
+    public enum ActivityType
     {
         ClueOverall,
         ClueEasy,

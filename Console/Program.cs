@@ -4,6 +4,7 @@ using Core;
 using Core.Enums;
 using Core.Helpers;
 using Core.Models;
+using Core.Extensions;
 
 namespace Tools
 {
@@ -14,11 +15,8 @@ namespace Tools
             string username;
             AccountType accountType;
 
-            //username = AskForUsername();
-            //accountType = AskForAccountType();
-
-            username = "ferrous_hugs";
-            accountType = AccountType.Ironman;
+            username = AskForUsername();
+            accountType = AskForAccountType();
 
             Player player = new HighscoreLookup(username, accountType).Player;
 
@@ -42,15 +40,13 @@ namespace Tools
         {
             Console.WriteLine("Your Skills:");
 
-            // Consider yourself sued!
-            skills.ForEach(skill =>  Console.WriteLine($"{skill.Name} - Level: {skill.Level}{(skill.IsMax ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
-            
+            skills.ForEach(skill =>  Console.WriteLine($"{skill.Name} - Level: {skill.Level}{(skill.IsMax() ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
         }
 
         private static void ParsePlayerActivities(List<Activity> activities)
         {
             Console.WriteLine("Your Activities:");
-            // Consider yourself sued!
+
             activities.ForEach(activity => Console.WriteLine($"{activity.Name} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
         }
 
@@ -59,9 +55,25 @@ namespace Tools
             string username;
 
             Console.Write("Please enter your OSRS username: ");
+            
             username = Console.ReadLine();
+            bool isValidUsername = false;
 
-            return PlayerHelper.CleanUsername(username);
+            do
+            {
+                if (PlayerHelper.ValidateUsername(username))
+                {
+                    isValidUsername = true;
+                }
+                else
+                {
+                    Console.WriteLine("That username isn't valid, please try again...");
+                    Console.Write("Please enter your OSRS username: ");
+                    username = Console.ReadLine();
+                }
+            } while (!isValidUsername);
+
+            return username;
         }
 
         private static AccountType AskForAccountType()

@@ -1,8 +1,4 @@
-﻿using Xunit;
-using Core;
-using Core.Enums;
-
-namespace HighscoreTests
+﻿namespace HighscoreTests
 {
     public class APITest
     {

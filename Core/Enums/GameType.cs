@@ -1,6 +1,6 @@
 ﻿namespace Core.Enums
 {
-    public enum GameTypes
+    public enum GameType
     {
         Runescape,
         OldSchoolRunescape

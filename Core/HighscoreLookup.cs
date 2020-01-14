@@ -1,6 +1,7 @@
 ﻿using Core.Enums;
 using Core.Helpers;
 using Core.Models;
+using System;
 
 namespace Core
 {
@@ -10,7 +11,7 @@ namespace Core
 
         public HighscoreLookup(string username, AccountType accountType)
         {
-            string url = PlayerHelper.BuildHighscoreUrl(username, accountType);
+            Uri url = PlayerHelper.BuildHighscoreUrl(username, accountType);
 
             string apiResults = API.GetString(url).Result;
 

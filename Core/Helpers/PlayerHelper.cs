@@ -1,5 +1,5 @@
 ﻿using Core.Enums;
-using System.Linq;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Core.Helpers
@@ -40,21 +40,12 @@ namespace Core.Helpers
             return accountTypeString;
         }
 
-        public static string CleanUsername(string username)
-        {
-            string cleanUsername = new string(username.Where(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '-' || c == '_').ToArray());
-
-            cleanUsername = cleanUsername.Replace(" ", "_");
-
-            return cleanUsername;
-        }
-
         public static bool ValidateUsername(string username)
         {
             return _usernameRegex.IsMatch(username.Trim());
         }
 
-        public static string BuildHighscoreUrl(string username, AccountType accountType = AccountType.Normal)
+        public static Uri BuildHighscoreUrl(string username, AccountType accountType = AccountType.Normal)
         {
             string highscoreUrl = "https://secure.runescape.com/m=hiscore_oldschool_{0}/index_lite.ws?player={1}";
 
@@ -85,7 +76,7 @@ namespace Core.Helpers
                     break;
             }
 
-            return string.Format(highscoreUrl, accountTypeString, username);
+            return new Uri(string.Format(highscoreUrl, accountTypeString, username));
         }
     }
 }

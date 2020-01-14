@@ -16,10 +16,10 @@ namespace Core.Models
             string[] parsedHighscoreResults = apiResults.Split("\n");
 
             // Drop the last element which is an empty line
-            parsedHighscoreResults = parsedHighscoreResults.Take(parsedHighscoreResults.Count() - 1).ToArray();
+            parsedHighscoreResults = parsedHighscoreResults.Take(parsedHighscoreResults.Length - 1).ToArray();
 
-            string[] skillsArray = parsedHighscoreResults.Take(Enum.GetNames(typeof(Skills)).Length).ToArray();
-            string[] activitiesArray = parsedHighscoreResults.TakeLast(Enum.GetNames(typeof(Activities)).Length).ToArray();
+            string[] skillsArray = parsedHighscoreResults.Take(Enum.GetNames(typeof(SkillName)).Length).ToArray();
+            string[] activitiesArray = parsedHighscoreResults.TakeLast(Enum.GetNames(typeof(ActivityType)).Length).ToArray();
 
             this.Skills = parseSkills(skillsArray);
             this.Activities = parseActivities(activitiesArray);
@@ -33,7 +33,7 @@ namespace Core.Models
             {
                 string[] parsedSkill = skill.value.Split(',');
 
-                string name = Enum.GetName(typeof(Skills), skill.i);
+                string name = Enum.GetName(typeof(SkillName), skill.i);
                 int rank = int.Parse(parsedSkill[0]);
                 int level = int.Parse(parsedSkill[1]);
                 int experience = int.Parse(parsedSkill[2]);
@@ -52,7 +52,7 @@ namespace Core.Models
             {
                 string[] parsedActivity = activity.value.Split(',');
 
-                string name = Enum.GetName(typeof(Activities), activity.i);
+                string name = Enum.GetName(typeof(ActivityType), activity.i);
                 int rank = int.Parse(parsedActivity[0]);
                 int number = int.Parse(parsedActivity[1]);
 
