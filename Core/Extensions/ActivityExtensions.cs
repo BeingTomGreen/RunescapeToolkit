@@ -7,7 +7,7 @@ namespace Core.Extensions
     {
         public static string DisplayValue(this ActivityName accountType)
         {
-            return accountType.GetAttribute<ActivityTypeMetaDataAttribute>().DisplayValue;
+            return accountType.GetAttribute<DisplayValueAttribute>().DisplayValue;
         }
     }
 }

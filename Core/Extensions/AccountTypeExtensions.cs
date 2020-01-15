@@ -7,12 +7,12 @@ namespace Core.Extensions
     {
         public static string DisplayValue(this AccountType accountType)
         {
-            return accountType.GetAttribute<AccountTypeMetaDataAttribute>().DisplayValue;
+            return accountType.GetAttribute<DisplayValueAttribute>().DisplayValue;
         }
 
         public static string UrlValue(this AccountType accountType)
         {
-            return accountType.GetAttribute<AccountTypeMetaDataAttribute>().UrlValue;
+            return accountType.GetAttribute<UrlValueAttribute>().UrlValue;
         }
     }
 }

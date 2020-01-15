@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Core.Attributes
 {
     [AttributeUsage(AttributeTargets.Field)]
-    public class ActivityTypeMetaDataAttribute : Attribute
+    class DisplayValueAttribute : Attribute
     {
         public string DisplayValue { get; private set; }
 
-        public ActivityTypeMetaDataAttribute(string displayValue)
+        public DisplayValueAttribute(string displayValue)
         {
             DisplayValue = displayValue;
         }

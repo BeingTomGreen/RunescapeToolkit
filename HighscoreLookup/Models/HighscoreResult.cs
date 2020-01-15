@@ -8,7 +8,7 @@ namespace Highscore.Models
 {
     public class HighscoreResult
     {
-        private int SKILLCOUNT { get { return Enum.GetNames(typeof(SkillName)).Length; } }
+        private int SKILLCOUNT { get { return Enum.GetNames(typeof(SkillType)).Length; } }
         private int ACTIVITYCOUNT { get { return Enum.GetNames(typeof(ActivityName)).Length; } }
         private int BossKillCount { get { return Enum.GetNames(typeof(BossName)).Length; } }
 
@@ -70,7 +70,7 @@ namespace Highscore.Models
             {
                 string[] parsedSkill = skill.value.Split(',');
 
-                SkillName skillType = (SkillName)skill.i;
+                SkillType skillType = (SkillType)skill.i;
                 int rank = int.Parse(parsedSkill[0]);
                 int level = int.Parse(parsedSkill[1]);
                 int experience = int.Parse(parsedSkill[2]);

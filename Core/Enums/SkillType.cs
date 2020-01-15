@@ -1,10 +1,11 @@
 ﻿namespace Core.Enums
 {
-    public enum SkillName
+    public enum SkillType
     {
+
         Overall,
         Attack,
-        Defense,
+        Defence,
         Strength,
         Hitpoints,
         Ranged,

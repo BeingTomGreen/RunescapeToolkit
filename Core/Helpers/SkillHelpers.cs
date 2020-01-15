@@ -7,7 +7,7 @@ namespace Core.Helpers
     {
         public static bool ValidateSkillName(string skillName)
         {
-            if (Enum.IsDefined(typeof(SkillName), skillName))
+            if (Enum.IsDefined(typeof(SkillType), skillName))
                 return true;
 
             return false;

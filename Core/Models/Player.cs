@@ -16,33 +16,50 @@ namespace Core.Models
 
         public List<BossKill> BossKills { get; private set; }
 
+        public double CombatLevel { get; private set; }
+
         public Player(string username, AccountType accountType, List<Skill> skills, List<Activity> activities, List<BossKill> bossKills)
         {
-            this.Username = PlayerHelper.CleanUsername(username);
-            this.AccountType = accountType;
-            this.Skills = skills;
-            this.Activities = activities;
-            this.BossKills = bossKills;
+            Username = PlayerHelper.CleanUsername(username);
+            AccountType = accountType;
+            Skills = skills;
+            Activities = activities;
+            BossKills = bossKills;
+
+            CombatLevel = calculatePlayerCombatLevel();
         }
 
         public Skill Overall()
         {
-            return this.Skills.Find(x => x.SkillName.Equals(SkillName.Overall));
+            return this.Skills.Find(x => x.SkillName.Equals(SkillType.Overall));
         }
 
-        public Skill Skill(SkillName skillType)
+        public Skill getSkill(SkillType skillType)
         {
             return this.Skills.Find(x => x.SkillName.Equals(skillType));
         }
 
-        public Activity Activity(ActivityName activityName)
+        public Activity getActivity(ActivityName activityName)
         {
             return this.Activities.Find(x => x.ActivityName.Equals(activityName));
         }
 
-        public BossKill BossKill(BossName bossName)
+        public BossKill getBossKill(BossName bossName)
         {
             return this.BossKills.Find(x => x.BossName.Equals(bossName));
+        }
+
+        private double calculatePlayerCombatLevel()
+        {
+            int attackLevel = getSkill(SkillType.Attack).Level;
+            int strengthLevel = getSkill(SkillType.Strength).Level;
+            int defenceLevel = getSkill(SkillType.Defence).Level;
+            int prayerLevel = getSkill(SkillType.Prayer).Level;
+            int rangedLevel = getSkill(SkillType.Ranged).Level;
+            int magicLevel = getSkill(SkillType.Magic).Level;
+            int hitpointsLevel = getSkill(SkillType.Hitpoints).Level;
+
+            return PlayerHelper.CalculateCombatLevel(attackLevel, strengthLevel, defenceLevel, prayerLevel, rangedLevel, magicLevel, hitpointsLevel);
         }
     }
 }

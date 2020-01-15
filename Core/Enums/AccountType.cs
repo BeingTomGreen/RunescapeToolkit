@@ -4,22 +4,28 @@ namespace Core.Enums
 {
     public enum AccountType
     {
-        [AccountTypeMetaData("Normal", "normal")]
+        [DisplayValue("Normal")]
+        [UrlValue("normal")]
         Normal,
 
-        [AccountTypeMetaData("Ironman", "ironman")]
+        [DisplayValue("Ironman")]
+        [UrlValue("ironman")]
         Ironman,
 
-        [AccountTypeMetaData("Ultimate Ironman", "ultimate")]
+        [DisplayValue("Ultimate Ironman")]
+        [UrlValue("ultimate")]
         UltimateIronman,
 
-        [AccountTypeMetaData("Hardcore Ironman", "hardcore")]
+        [DisplayValue("Hardcore Ironman")]
+        [UrlValue("hardcore")]
         HardcoreIronman,
 
-        [AccountTypeMetaData("Deadman", "deadman")]
+        [DisplayValue("Deadman")]
+        [UrlValue("deadman")]
         DeadmanMode,
 
-        [AccountTypeMetaData("Seasonal Deadman", "seasonal")]
+        [DisplayValue("Seasonal Deadman")]
+        [UrlValue("seasonal")]
         SeasonalDeadmanMode
     }
 

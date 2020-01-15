@@ -11,12 +11,48 @@ namespace Core.Tests.Models
 
         public PlayerTest()
         {
+            _player = BuildPlayer();
+        }
+
+        [Fact]
+        public void CanRetrivePlayerOverallSkillTest()
+        {
+            Assert.Equal(SkillType.Overall, _player.Overall().SkillName);
+        }
+
+        [Fact]
+        public void CanRetrivePlayerSkillByNameTest()
+        {
+            Assert.IsType<Skill>(_player.getSkill(SkillType.Slayer));
+        }
+
+        [Fact]
+        public void CanRetrivePlayerActivityByNameTest()
+        {
+            Assert.IsType<Activity>(_player.getActivity(ActivityName.ClueOverall));
+        }
+
+        [Fact]
+        public void CanRetrivePlayerBossKillByNameTest()
+        {
+            Assert.IsType<BossKill>(_player.getBossKill(BossName.Kraken));
+        }
+
+        private Player BuildPlayer()
+        {
             List<Skill> skills = new List<Skill>();
             List<Activity> activities = new List<Activity>();
             List<BossKill> bossKills = new List<BossKill>();
 
-            skills.Add(new Skill(SkillName.Overall, 2277, 1, 24000000000));
-            skills.Add(new Skill(SkillName.Slayer, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Overall, 2277, 1, 24000000000));
+            skills.Add(new Skill(SkillType.Slayer, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Attack, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Strength, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Defence, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Prayer, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Ranged, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Magic, 99, 1, 200000000));
+            skills.Add(new Skill(SkillType.Hitpoints, 99, 1, 200000000));
 
             activities.Add(new Activity(ActivityName.ClueOverall, 1, 9999));
 
@@ -24,31 +60,7 @@ namespace Core.Tests.Models
 
             Player player = new Player("ferrous_hugs", AccountType.Ironman, skills, activities, bossKills);
 
-            this._player = player;
-        }
-
-        [Fact]
-        public void CanRetrivePlayerOverallSkillTest()
-        {
-            Assert.Equal(SkillName.Overall, _player.Overall().SkillName);
-        }
-
-        [Fact]
-        public void CanRetrivePlayerSkillByNameTest()
-        {
-            Assert.IsType<Skill>(_player.Skill(SkillName.Slayer));
-        }
-
-        [Fact]
-        public void CanRetrivePlayerActivityByNameTest()
-        {
-            Assert.IsType<Activity>(_player.Activity(ActivityName.ClueOverall));
-        }
-
-        [Fact]
-        public void CanRetrivePlayerBossKillByNameTest()
-        {
-            Assert.IsType<BossKill>(_player.BossKill(BossName.Kraken));
+            return player;
         }
     }
 }

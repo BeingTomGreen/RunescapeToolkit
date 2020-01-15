@@ -4,34 +4,34 @@ namespace Core.Enums
 {
     public enum ActivityName
     {
-        [ActivityTypeMetaData("League Points")]
+        [DisplayValue("League Points")]
         League,
 
-        [ActivityTypeMetaData("Bounty Hunter Target Kills")]
+        [DisplayValue("Bounty Hunter Target Kills")]
         BountyHunterTargetKills,
 
-        [ActivityTypeMetaData("Bounty Hunter Rogue Kills")]
+        [DisplayValue("Bounty Hunter Rogue Kills")]
         BountyHunterRogueKills,
 
-        [ActivityTypeMetaData("Clue Scrolls: Overall")]
+        [DisplayValue("Clue Scrolls: Overall")]
         ClueOverall,
 
-        [ActivityTypeMetaData("Clue Scrolls: Easy")]
+        [DisplayValue("Clue Scrolls: Easy")]
         ClueEasy,
-        
-        [ActivityTypeMetaData("Clue Scrolls: Medium")]
+
+        [DisplayValue("Clue Scrolls: Medium")]
         ClueMedium,
         
-        [ActivityTypeMetaData("Clue Scrolls: Hard")]
+        [DisplayValue("Clue Scrolls: Hard")]
         ClueHard,
-        
-        [ActivityTypeMetaData("Clue Scrolls: Elite")]
+
+        [DisplayValue("Clue Scrolls: Elite")]
         ClueElite,
         
-        [ActivityTypeMetaData("Clue Scrolls: Master")]
+        [DisplayValue("Clue Scrolls: Master")]
         ClueMaster,
         
-        [ActivityTypeMetaData("Last Man Standing")]
+        [DisplayValue("Last Man Standing")]
         LastManStanding
     }
 }

@@ -34,6 +34,8 @@ namespace Tools
 
             Console.WriteLine($"Welcome, { player.Username } ({ player.AccountType.DisplayValue() })");
 
+            Console.WriteLine("Your combat level is: " + player.CombatLevel);
+
             DisplayPlayerSkills(player.Skills);
 
             DisplayPlayerActivities(player.Activities);

@@ -1,6 +1,8 @@
 ﻿using Core.Enums;
 using Core.Extensions;
+using Core.Models;
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Core.Helpers
@@ -26,6 +28,18 @@ namespace Core.Helpers
             string accountTypeString = accountType.UrlValue();
 
             return new Uri(string.Format(highscoreUrl, accountTypeString, username));
+        }
+
+        public static double CalculateCombatLevel(int attack, int strength, int defence, int prayer, int ranged, int magic, int hitpoints)
+        {
+            double baseCombat = (defence + hitpoints + (prayer / 2)) * 0.25;
+            double meleeCombat = (attack + strength) * 0.325;
+            double rangedCombat = (ranged / 2) * 0.325;
+            double magicCombat = (magic / 2) * 0.325;
+
+            double highestCombat = new double[]{ meleeCombat, rangedCombat, magicCombat}.Max();
+
+            return baseCombat + highestCombat;
         }
     }
 }
