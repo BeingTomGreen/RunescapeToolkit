@@ -8,11 +8,15 @@ namespace Highscore.Models
 {
     public class HighscoreResult
     {
-        public List<PlayerSkill> Skills { get; private set; }
+        private int SKILLCOUNT { get { return Enum.GetNames(typeof(SkillName)).Length; } }
+        private int ACTIVITYCOUNT { get { return Enum.GetNames(typeof(ActivityName)).Length; } }
+        private int BossKillCount { get { return Enum.GetNames(typeof(BossName)).Length; } }
 
-        public List<PlayerActivity> Activities { get; private set; }
+        public List<Skill> Skills { get; private set; }
 
-        public List<PlayerBossKill> BossKills { get; private set; }
+        public List<Activity> Activities { get; private set; }
+
+        public List<BossKill> BossKills { get; private set; }
 
         public HighscoreResult(string apiResults)
         {
@@ -38,65 +42,76 @@ namespace Highscore.Models
             // Drop the last element which is an empty line
             parsedHighscoreResults = parsedHighscoreResults.Take(parsedHighscoreResults.Length - 1).ToArray();
 
-            string[] skillsArray = parsedHighscoreResults.Take(Enum.GetNames(typeof(SkillType)).Length).ToArray();
-            string[] activitiesArray = parsedHighscoreResults.Skip(Enum.GetNames(typeof(SkillType)).Length).Take(Enum.GetNames(typeof(ActivityType)).Length).ToArray();
-            string[] bossKillsArray = parsedHighscoreResults.Skip(Enum.GetNames(typeof(SkillType)).Length + Enum.GetNames(typeof(ActivityType)).Length).Take(Enum.GetNames(typeof(BossKillType)).Length).ToArray();
-
-            this.Skills = parseSkills(skillsArray);
-            this.Activities = parseActivities(activitiesArray);
-            this.BossKills = parseBossKills(bossKillsArray);
+            Skills = buildSkillList(getSkillArray(parsedHighscoreResults));
+            Activities = buildActivityList(getActivityArray(parsedHighscoreResults));
+            BossKills = buildBossKillList(getBossKillArray(parsedHighscoreResults));
         }
 
-        private List<PlayerSkill> parseSkills(string[] highscoreSkillResults)
+        private string[] getSkillArray(string[] apiResults)
         {
-            List<PlayerSkill> skills = new List<PlayerSkill>();
+            return apiResults.Take(SKILLCOUNT).ToArray();
+        }
+
+        private string[] getActivityArray(string[] apiResults)
+        {
+            return apiResults.Skip(SKILLCOUNT).Take(ACTIVITYCOUNT).ToArray();
+        }
+
+        private string[] getBossKillArray(string[] apiResults)
+        {
+            return apiResults.Skip(SKILLCOUNT + ACTIVITYCOUNT).Take(BossKillCount).ToArray();
+        }
+
+        private List<Skill> buildSkillList(string[] highscoreSkillResults)
+        {
+            List<Skill> skills = new List<Skill>();
 
             foreach (var skill in highscoreSkillResults.Select((value, i) => new { i, value }))
             {
                 string[] parsedSkill = skill.value.Split(',');
 
-                SkillType skillType = (SkillType)skill.i;
+                SkillName skillType = (SkillName)skill.i;
                 int rank = int.Parse(parsedSkill[0]);
                 int level = int.Parse(parsedSkill[1]);
                 int experience = int.Parse(parsedSkill[2]);
 
-                skills.Add(new PlayerSkill(skillType, rank, level, experience));
+                skills.Add(new Skill(skillType, rank, level, experience));
             }
 
             return skills;
         }
 
-        private List<PlayerActivity> parseActivities(string[] highscoreActivitiesResults)
+        private List<Activity> buildActivityList(string[] highscoreActivitiesResults)
         {
-            List<PlayerActivity> activities = new List<PlayerActivity>();
+            List<Activity> activities = new List<Activity>();
 
             foreach (var activity in highscoreActivitiesResults.Select((value, i) => new { i, value }))
             {
                 string[] parsedActivity = activity.value.Split(',');
 
-                ActivityType activityType = (ActivityType)activity.i;
+                ActivityName activityType = (ActivityName)activity.i;
                 int rank = int.Parse(parsedActivity[0]);
                 int number = int.Parse(parsedActivity[1]);
 
-                activities.Add(new PlayerActivity(activityType, rank, number));
+                activities.Add(new Activity(activityType, rank, number));
             }
 
             return activities;
         }
 
-        private List<PlayerBossKill> parseBossKills(string[] highscoreBossKillsResults)
+        private List<BossKill> buildBossKillList(string[] highscoreBossKillsResults)
         {
-            List<PlayerBossKill> bossKills = new List<PlayerBossKill>();
+            List<BossKill> bossKills = new List<BossKill>();
 
             foreach (var boss in highscoreBossKillsResults.Select((value, i) => new { i, value }))
             {
                 string[] parsedBossKill= boss.value.Split(',');
 
-                BossKillType bossKillType = (BossKillType)boss.i;
+                BossName bossKillType = (BossName)boss.i;
                 int rank = int.Parse(parsedBossKill[0]);
                 int number = int.Parse(parsedBossKill[1]);
 
-                bossKills.Add(new PlayerBossKill(bossKillType, rank, number));
+                bossKills.Add(new BossKill(bossKillType, rank, number));
             }
 
             return bossKills;

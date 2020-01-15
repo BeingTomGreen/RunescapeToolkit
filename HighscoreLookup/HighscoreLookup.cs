@@ -17,7 +17,7 @@ namespace Highscore
 
             string apiResults = API.GetString(url).Result;
 
-            HighscoreResult highscoreResult = new Models.HighscoreResult(apiResults);
+            HighscoreResult highscoreResult = new HighscoreResult(apiResults);
 
             this.Player = new Player(username, accountType, highscoreResult.Skills, highscoreResult.Activities, highscoreResult.BossKills);
         }

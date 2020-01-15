@@ -2,7 +2,7 @@
 
 namespace Core.Enums
 {
-    public enum ActivityType
+    public enum ActivityName
     {
         [ActivityTypeMetaData("League Points")]
         League,

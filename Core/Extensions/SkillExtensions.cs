@@ -5,9 +5,9 @@ namespace Core.Extensions
 {
     public static class SkillExtensions
     {
-        public static bool IsMax(this PlayerSkill skill)
+        public static bool IsMax(this Skill skill)
         {
-            if ((skill.SkillType == SkillType.Overall && skill.Level == 2277) || skill.Level == 99)
+            if ((skill.SkillName == SkillName.Overall && skill.Level == 2277) || skill.Level == 99)
             {
                 return true;
             }

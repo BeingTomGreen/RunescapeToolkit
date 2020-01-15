@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Core;
 using Core.Enums;
 using Core.Helpers;
 using Core.Models;
@@ -42,25 +41,25 @@ namespace Tools
             DisplayPlayerBossKills(player.BossKills);
         }
 
-        private static void DisplayPlayerSkills(List<PlayerSkill> skills)
+        private static void DisplayPlayerSkills(List<Skill> skills)
         {
             Console.WriteLine("Your Skills:");
 
-            skills.ForEach(skill => Console.WriteLine($"{skill.SkillType.ToString()} - Level: {skill.Level}{(skill.IsMax() ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
+            skills.ForEach(skill => Console.WriteLine($"{skill.SkillName.ToString()} - Level: {skill.Level}{(skill.IsMax() ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
         }
 
-        private static void DisplayPlayerActivities(List<PlayerActivity> activities)
+        private static void DisplayPlayerActivities(List<Activity> activities)
         {
             Console.WriteLine("Your Activities:");
 
-            activities.ForEach(activity => Console.WriteLine($"{activity.ActivityType.DisplayValue()} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
+            activities.ForEach(activity => Console.WriteLine($"{activity.ActivityName.DisplayValue()} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
         }
 
-        private static void DisplayPlayerBossKills(List<PlayerBossKill> bossKills)
+        private static void DisplayPlayerBossKills(List<BossKill> bossKills)
         {
             Console.WriteLine("Your Boss Kills:");
 
-            bossKills.ForEach(bossKill => Console.WriteLine($"{bossKill.BossKillType.ToString()} - Rank: {bossKill.Rank.ToString("N0")}, Count: {bossKill.Number.ToString("N0")}"));
+            bossKills.ForEach(bossKill => Console.WriteLine($"{bossKill.BossName.ToString()} - Rank: {bossKill.Rank.ToString("N0")}, Count: {bossKill.Number.ToString("N0")}"));
         }
 
 

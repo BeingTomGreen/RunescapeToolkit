@@ -3,9 +3,9 @@ using Core.Enums;
 
 namespace Core.Models
 {
-    public class PlayerActivity
+    public class Activity
     {
-        public ActivityType ActivityType { get; private set; }
+        public ActivityName ActivityName { get; private set; }
 
         private int _rank;
 
@@ -34,9 +34,9 @@ namespace Core.Models
             private set { _number = value; }
         }
 
-        public PlayerActivity(ActivityType activity, int rank, int number)
+        public Activity(ActivityName activity, int rank, int number)
         {
-            this.ActivityType = activity;
+            this.ActivityName = activity;
             this.Rank = rank;
             this.Number = number;
         }

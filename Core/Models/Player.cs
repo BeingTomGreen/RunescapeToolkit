@@ -10,13 +10,13 @@ namespace Core.Models
 
         public AccountType AccountType { get; private set; }
 
-        public List<PlayerSkill> Skills { get; private set; }
+        public List<Skill> Skills { get; private set; }
 
-        public List<PlayerActivity> Activities{ get; private set; }
+        public List<Activity> Activities{ get; private set; }
 
-        public List<PlayerBossKill> BossKills { get; private set; }
+        public List<BossKill> BossKills { get; private set; }
 
-        public Player(string username, AccountType accountType, List<PlayerSkill> skills, List<PlayerActivity> activities, List<PlayerBossKill> bossKills)
+        public Player(string username, AccountType accountType, List<Skill> skills, List<Activity> activities, List<BossKill> bossKills)
         {
             this.Username = PlayerHelper.CleanUsername(username);
             this.AccountType = accountType;
@@ -25,15 +25,24 @@ namespace Core.Models
             this.BossKills = bossKills;
         }
 
-        public PlayerSkill Overall()
+        public Skill Overall()
         {
-            return this.Skills.Find(x => x.SkillType.Equals(SkillType.Overall));
+            return this.Skills.Find(x => x.SkillName.Equals(SkillName.Overall));
         }
 
-        public PlayerSkill Skill(SkillType skillType)
+        public Skill Skill(SkillName skillType)
         {
-            return this.Skills.Find(x => x.SkillType.Equals(skillType));
+            return this.Skills.Find(x => x.SkillName.Equals(skillType));
         }
 
+        public Activity Activity(ActivityName activityName)
+        {
+            return this.Activities.Find(x => x.ActivityName.Equals(activityName));
+        }
+
+        public BossKill BossKill(BossName bossName)
+        {
+            return this.BossKills.Find(x => x.BossName.Equals(bossName));
+        }
     }
 }
