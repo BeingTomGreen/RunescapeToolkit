@@ -27,6 +27,11 @@ namespace Core.Models
 
             }
 
+            ProcessApiResults(apiResults);
+        }
+
+        private void ProcessApiResults(string apiResults)
+        {
             string[] parsedHighscoreResults = apiResults.Split("\n");
 
             // Drop the last element which is an empty line
@@ -84,11 +89,11 @@ namespace Core.Models
 
             foreach (var boss in highscoreBossKillsResults.Select((value, i) => new { i, value }))
             {
-                string[] parsedActivity = boss.value.Split(',');
+                string[] parsedBossKill= boss.value.Split(',');
 
                 BossKillType bossKillType = (BossKillType)boss.i;
-                int rank = int.Parse(parsedActivity[0]);
-                int number = int.Parse(parsedActivity[1]);
+                int rank = int.Parse(parsedBossKill[0]);
+                int number = int.Parse(parsedBossKill[1]);
 
                 bossKills.Add(new PlayerBossKill(bossKillType, rank, number));
             }

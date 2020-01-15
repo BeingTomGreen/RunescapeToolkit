@@ -23,6 +23,7 @@ namespace Core.Enums
         DagannothRex,
         DagannothSupreme,
         DerangedArchaeologist,
+        UNKNOWN,
         GeneralGraardor,
         GiantMole,
         GrotesqueGuardians,
