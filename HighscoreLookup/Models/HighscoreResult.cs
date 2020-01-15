@@ -1,9 +1,10 @@
 ﻿using Core.Enums;
+using Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Core.Models
+namespace Highscore.Models
 {
     public class HighscoreResult
     {
