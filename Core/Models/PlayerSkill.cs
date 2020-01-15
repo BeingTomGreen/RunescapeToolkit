@@ -4,19 +4,19 @@ namespace Core.Models
 {
     public class PlayerSkill
     {
-        public PlayerSkill(SkillType skill, int rank, int level, int experience)
+        public PlayerSkill(SkillType skill, int rank, int level, long experience)
         {
-            this.Skill = skill;
+            this.SkillType = skill;
             this.Rank = rank;
             this.Level = level;
             this.Experience = experience;
         }
 
-        public SkillType Skill { get; private set; }
+        public SkillType SkillType { get; private set; }
 
         public int Level { get; private set; }
 
-        public int Experience { get; private set; }
+        public long Experience { get; private set; }
         
         public int Rank { get; private set; }
 

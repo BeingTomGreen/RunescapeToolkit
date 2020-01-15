@@ -14,6 +14,7 @@ namespace Core.Tests.Models
             List<PlayerSkill> skills = new List<PlayerSkill>();
             List<PlayerActivity> activities = new List<PlayerActivity>();
 
+            skills.Add(new PlayerSkill(SkillType.Overall, 2277, 1, 24000000000));
             skills.Add(new PlayerSkill(SkillType.Slayer, 99, 1, 200000));
 
             activities.Add(new PlayerActivity(ActivityType.ClueEasy, 1, 1));
@@ -24,7 +25,13 @@ namespace Core.Tests.Models
         }
 
         [Fact]
-        public void CanRetrivePlayerSkillByType()
+        public void CanRetrivePlayerOverallSkillTest()
+        {
+            Assert.Equal(SkillType.Overall, _player.Overall().SkillType);
+        }
+
+        [Fact]
+        public void CanRetrivePlayerSkillByTypeTest()
         {
             Assert.IsType<PlayerSkill>(_player.Skill(SkillType.Slayer));
         }

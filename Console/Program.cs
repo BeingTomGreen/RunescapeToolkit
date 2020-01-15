@@ -18,7 +18,7 @@ namespace Tools
             //username = AskForUsername();
             //accountType = AskForAccountType();
 
-            username = "ferrous_hugs";
+            username = "iron_mammal";
             accountType = AccountType.Ironman;
 
             Player player = new HighscoreLookup(username, accountType).Player;
@@ -32,26 +32,36 @@ namespace Tools
         {
             Console.Clear();
 
-            Console.WriteLine($"Welcome, { player.Username } ({ player.AccountType })");
+            Console.WriteLine($"Welcome, { player.Username } ({ player.AccountType.DisplayValue() })");
 
             DisplayPlayerSkills(player.Skills);
 
             DisplayPlayerActivities(player.Activities);
+
+            DisplayPlayerBossKills(player.BossKills);
         }
 
         private static void DisplayPlayerSkills(List<PlayerSkill> skills)
         {
             Console.WriteLine("Your Skills:");
 
-            skills.ForEach(skill => Console.WriteLine($"{skill.Skill.ToString()} - Level: {skill.Level}{(skill.IsMax() ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
+            skills.ForEach(skill => Console.WriteLine($"{skill.SkillType.ToString()} - Level: {skill.Level}{(skill.IsMax() ? " (Max)" : "")}, Experience: {skill.Experience.ToString("N0")}, Rank: {skill.Rank.ToString("N0")}"));
         }
 
         private static void DisplayPlayerActivities(List<PlayerActivity> activities)
         {
             Console.WriteLine("Your Activities:");
 
-            activities.ForEach(activity => Console.WriteLine($"{activity.Activity.ToString()} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
+            activities.ForEach(activity => Console.WriteLine($"{activity.ActivityType.DisplayValue()} - Rank: {activity.Rank.ToString("N0")}, Count: {activity.Number.ToString("N0")}"));
         }
+
+        private static void DisplayPlayerBossKills(List<PlayerBossKill> bossKills)
+        {
+            Console.WriteLine("Your Boss Kills:");
+
+            bossKills.ForEach(bossKill => Console.WriteLine($"{bossKill.BossKillType.ToString()} - Rank: {bossKill.Rank.ToString("N0")}, Count: {bossKill.Number.ToString("N0")}"));
+        }
+
 
         private static string AskForUsername()
         {

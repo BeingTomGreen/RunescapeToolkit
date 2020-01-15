@@ -1,17 +1,11 @@
-﻿using Core.Enums;
+﻿
+using Core.Enums;
 
 namespace Core.Models
 {
     public class PlayerActivity
     {
-        public PlayerActivity(ActivityType activity, int rank, int number)
-        {
-            this.Activity = activity;
-            this.Rank = rank;
-            this.Number = number;
-        }
-
-        public ActivityType Activity { get; private set; }
+        public ActivityType ActivityType { get; private set; }
 
         private int _rank;
 
@@ -38,6 +32,13 @@ namespace Core.Models
                 return _number;
             }
             private set { _number = value; }
+        }
+
+        public PlayerActivity(ActivityType activity, int rank, int number)
+        {
+            this.ActivityType = activity;
+            this.Rank = rank;
+            this.Number = number;
         }
 
     }

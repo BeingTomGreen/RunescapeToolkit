@@ -8,7 +8,9 @@ namespace Core.Helpers
         public static bool ValidateActivityName(string activityName)
         {
             if (Enum.IsDefined(typeof(PlayerActivity), activityName))
+            {
                 return true;
+            }
 
             return false;
         }

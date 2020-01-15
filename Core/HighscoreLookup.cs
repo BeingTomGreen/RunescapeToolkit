@@ -17,7 +17,7 @@ namespace Core
 
             HighscoreResult highscoreResult = new Models.HighscoreResult(apiResults);
 
-            this.Player = new Player(username, accountType, highscoreResult.Skills, highscoreResult.Activities);
+            this.Player = new Player(username, accountType, highscoreResult.Skills, highscoreResult.Activities, highscoreResult.BossKills);
         }
 
     }

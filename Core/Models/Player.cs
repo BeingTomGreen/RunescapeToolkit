@@ -14,17 +14,25 @@ namespace Core.Models
 
         public List<PlayerActivity> Activities{ get; private set; }
 
-        public Player(string username, AccountType accountType, List<PlayerSkill> skills, List<PlayerActivity> activities)
+        public List<PlayerBossKill> BossKills { get; private set; }
+
+        public Player(string username, AccountType accountType, List<PlayerSkill> skills, List<PlayerActivity> activities, List<PlayerBossKill> bossKills)
         {
             this.Username = PlayerHelper.CleanUsername(username);
             this.AccountType = accountType;
             this.Skills = skills;
             this.Activities = activities;
+            this.BossKills = bossKills;
+        }
+
+        public PlayerSkill Overall()
+        {
+            return this.Skills.Find(x => x.SkillType.Equals(SkillType.Overall));
         }
 
         public PlayerSkill Skill(SkillType skillType)
         {
-            return this.Skills.Find(x => x.Skill.Equals(skillType));
+            return this.Skills.Find(x => x.SkillType.Equals(skillType));
         }
 
     }
