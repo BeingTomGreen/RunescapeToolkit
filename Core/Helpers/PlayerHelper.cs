@@ -30,14 +30,14 @@ namespace Core.Helpers
             return new Uri(string.Format(highscoreUrl, accountTypeString, username));
         }
 
-        public static double CalculateCombatLevel(int attack, int strength, int defence, int prayer, int ranged, int magic, int hitpoints)
+        public static float CalculateCombatLevel(int attack, int strength, int defence, int prayer, int ranged, int magic, int hitpoints)
         {
-            double baseCombat = (defence + hitpoints + (prayer / 2)) * 0.25;
-            double meleeCombat = (attack + strength) * 0.325;
-            double rangedCombat = (ranged / 2) * 0.325;
-            double magicCombat = (magic / 2) * 0.325;
+            float baseCombat = (defence + hitpoints + (prayer / 2)) * 0.25f;
+            float meleeCombat = (attack + strength) * 0.325f;
+            float rangedCombat = (ranged / 2) * 0.325f;
+            float magicCombat = (magic / 2) * 0.325f;
 
-            double highestCombat = new double[]{ meleeCombat, rangedCombat, magicCombat}.Max();
+            float highestCombat = new float[]{ meleeCombat, rangedCombat, magicCombat}.Max();
 
             return baseCombat + highestCombat;
         }

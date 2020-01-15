@@ -47,11 +47,11 @@ namespace Core.Tests.Helpers
         [Fact]
         public void CalculatesCombatLevel()
         {
-            Assert.Equal(3.4, PlayerHelper.CalculateCombatLevel(1, 1, 1, 1, 1, 1, 10));
-            Assert.Equal(31.75, PlayerHelper.CalculateCombatLevel(25, 25, 25, 25, 25, 25, 25));
-            Assert.Equal(63.75, PlayerHelper.CalculateCombatLevel(50, 50, 50, 50, 50, 50, 50));
-            Assert.Equal(117.30000000000001, PlayerHelper.CalculateCombatLevel(92, 92, 92, 92, 92, 92, 92));
-            Assert.Equal(126.10000000000001, PlayerHelper.CalculateCombatLevel(99, 99, 99, 99, 99, 99, 99));
+            Assert.Equal(3.4f, PlayerHelper.CalculateCombatLevel(1, 1, 1, 1, 1, 1, 10));
+            Assert.Equal(31.75f, PlayerHelper.CalculateCombatLevel(25, 25, 25, 25, 25, 25, 25));
+            Assert.Equal(63.75f, PlayerHelper.CalculateCombatLevel(50, 50, 50, 50, 50, 50, 50));
+            Assert.Equal(117.30000000000001f, PlayerHelper.CalculateCombatLevel(92, 92, 92, 92, 92, 92, 92));
+            Assert.Equal(126.10000000000001f, PlayerHelper.CalculateCombatLevel(99, 99, 99, 99, 99, 99, 99));
         }
     }
 }

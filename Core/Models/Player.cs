@@ -16,7 +16,7 @@ namespace Core.Models
 
         public List<BossKill> BossKills { get; private set; }
 
-        public double CombatLevel { get; private set; }
+        public float CombatLevel { get; private set; }
 
         public Player(string username, AccountType accountType, List<Skill> skills, List<Activity> activities, List<BossKill> bossKills)
         {
@@ -49,7 +49,7 @@ namespace Core.Models
             return this.BossKills.Find(x => x.BossName.Equals(bossName));
         }
 
-        private double calculatePlayerCombatLevel()
+        private float calculatePlayerCombatLevel()
         {
             int attackLevel = getSkill(SkillType.Attack).Level;
             int strengthLevel = getSkill(SkillType.Strength).Level;
