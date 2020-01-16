@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.UnitTests", "Core.Tests\Core.UnitTests.csproj", "{4DC0B992-323E-4E2A-9996-8EF5481A333C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Highscore", "HighscoreLookup\Highscore.csproj", "{442F81B4-94C1-4237-A766-7CCD8E7F7394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiscores", "HighscoreLookup\Hiscores.csproj", "{442F81B4-94C1-4237-A766-7CCD8E7F7394}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Highscore.UnitTests", "HighscoreLookup.UnitTests\Highscore.UnitTests.csproj", "{92156739-5F58-45E0-8B2C-E11EBA67282F}"
 EndProject

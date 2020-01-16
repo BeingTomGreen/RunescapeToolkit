@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HighscoreLookup\Highscore.csproj" />
+    <ProjectReference Include="..\HighscoreLookup\Hiscores.csproj" />
   </ItemGroup>
 
 </Project>

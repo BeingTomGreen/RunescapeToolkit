@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\HighscoreLookup\Highscore.csproj" />
+    <ProjectReference Include="..\HighscoreLookup\Hiscores.csproj" />
   </ItemGroup>
 
 </Project>

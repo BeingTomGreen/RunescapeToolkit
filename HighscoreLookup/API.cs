@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 
 namespace Core
 {
@@ -8,27 +11,12 @@ namespace Core
     {
         private static HttpClient httpClient = new HttpClient();
 
-        public static async Task<string> GetString(Uri url)
+        public static async Task<string> GetRequest(Uri url)
         {
-            string results = "";
+            HttpResponseMessage results = await httpClient.GetAsync(url).ConfigureAwait(false);
+            _ = results.EnsureSuccessStatusCode();
 
-            try
-            {
-                results = await httpClient.GetStringAsync(url).ConfigureAwait(true);
-
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
-            }
-
-            httpClient.Dispose();
-
-            return results;
+            return await results.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
-
-
-
     }
 }

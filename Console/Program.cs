@@ -4,13 +4,14 @@ using Core.Enums;
 using Core.Helpers;
 using Core.Models;
 using Core.Extensions;
-using Highscore;
+using Hiscores;
+using System.Threading.Tasks;
 
 namespace Tools
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             string username;
             AccountType accountType;
@@ -21,7 +22,7 @@ namespace Tools
             username = "iron_mammal";
             accountType = AccountType.Ironman;
 
-            Player player = new HighscoreLookup(username, accountType).Player;
+            Player player = await Lookup.FindPlayer(username, accountType);
 
             DisplayAccountInformation(player);
 

@@ -1,6 +1,6 @@
 ﻿using Core.Enums;
 using Core.Models;
-using Highscore.Models;
+using Hiscores.Models;
 using System;
 using Xunit;
 
